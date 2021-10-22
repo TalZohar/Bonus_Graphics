@@ -1,4 +1,5 @@
 import pygame
+import math
 
 def draw_circle(screen, center, radius, color):
     x = 0
@@ -35,18 +36,27 @@ def main():
     # Fill the background with white
     screen.fill((255, 255, 255))
 
-    # Draw a solid blue circle in the center
-    draw_circle(screen, [300,250], 60, (0,0,0))
-    # Flip the display
-    pygame.display.flip()
+
     # Main loop
     running = True
+    x = 0
     while running:
+
         # Look at every event in the queue
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
 
+        mouse_x, mouse_y = pygame.mouse.get_pos()
+        dist = int(math.sqrt((mouse_x-x)**2 + (mouse_y-250)**2))
+        screen.fill((255, 255, 255))
+        draw_circle(screen, [x, 250], dist, (0, 0, 0))
+        pygame.display.flip()
+
+        x += 1
+        if x == 500:
+            x = 0
+        pygame.time.delay(5)
 
     # Done! Time to quit.
     pygame.quit()
