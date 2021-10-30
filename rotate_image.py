@@ -34,7 +34,7 @@ def main():
 
     # Set up the drawing window
     infoObject = pygame.display.Info()
-    screen_h, screen_w = infoObject.current_w*0.9, infoObject.current_h*0.9
+    screen_h, screen_w = int(infoObject.current_w*0.9), int(infoObject.current_h*0.9)
     screen = pygame.display.set_mode((screen_h, screen_w))
 
     # Fill the background with white
@@ -44,7 +44,7 @@ def main():
     center = int(screen_w/2), int(screen_h/2)
     # Main loop
     running = True
-    angle = 0.1
+    angle = math.pi/2 * 150/180
 
     while running:
 
